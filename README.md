@@ -4,6 +4,8 @@ Questo progetto implementa un sistema MQTT distribuito su tre Raspberry Pi con s
 - `purple` (172.16.33.37): client che legge temperatura e umidità (sensore DHT/SHT35 su D3), si sottoscrive ai topic LED rosso (D5) e verde (D6).
 - `black` (172.16.32.182): server che esegue Mosquitto (broker), salva i dati in SQLite e pubblica comandi LED in base alle soglie di temperatura e umidità.
 
+`git clone https://github.com/StefMila/IoT.git`
+
 Topic principali:
 - Sensori: `sensors/zone/<zone>/temperature` e `sensors/zone/<zone>/humidity` (payload JSON con zone, valore, timestamp)
 - Attuatori: `actuators/zone/purple/led` (LED rosso per temperatura) e `actuators/zone/purple/led_humidity` (LED verde per umidità)
@@ -270,3 +272,4 @@ Notes and caveats
 If you want, I can:
 - Add automatic service files / systemd units to run the scripts as services.
 - Switch storage to InfluxDB instead of SQLite and show Grafana examples.
+
