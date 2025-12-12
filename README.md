@@ -170,25 +170,31 @@ Se vuoi che proceda a tentare il push da questo ambiente, inviami l'URL remoto (
 **Server (black):**
 ```bash
 ssh pi@172.16.32.182
-cd /path/to/repo
+cd ~/IoT/black
+python3 -m venv venv
 source venv/bin/activate
+pip install -r requirements.txt
 python3 server.py --broker 172.16.32.182 --threshold 22.0 --humidity-threshold 60.0
 ```
 
 **Red:**
 ```bash
 ssh pi@172.16.33.38
-cd /path/to/repo
+cd ~/IoT/red
+python3 -m venv venv
 source venv/bin/activate
-sudo python3 mqttthing.py --role red --simulate
+pip install -r requirements.txt
+sudo python3 mqttthing.py --role red
 ```
 
 **Purple:**
 ```bash
 ssh pi@172.16.33.37
-cd /path/to/repo
+cd ~/IoT/purple
+python3 -m venv venv
 source venv/bin/activate
-sudo python3 mqttthing.py --role purple --led-pin 5 --simulate
+pip install -r requirements.txt
+sudo python3 mqttthing.py --role purple --led-pin 5
 ```
 
 Argomenti disponibili:
@@ -282,6 +288,7 @@ Notes and caveats
 If you want, I can:
 - Add automatic service files / systemd units to run the scripts as services.
 - Switch storage to InfluxDB instead of SQLite and show Grafana examples.
+
 
 
 
