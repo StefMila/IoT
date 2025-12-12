@@ -41,6 +41,14 @@ Installazione e comandi (passaggi dettagliati)
    sudo apt update
    sudo apt install -y mosquitto mosquitto-clients sqlite3
    sudo systemctl enable --now mosquitto
+
+   oppure
+
+   ssh pi@172.16.32.182
+   sudo systemctl start mosquitto
+   sudo systemctl enable mosquitto
+   sudo systemctl status mosquitto
+
    ```
 
 - Posizionati nella cartella del progetto (dove hai copiato gli script) e crea un virtualenv:
@@ -272,4 +280,5 @@ Notes and caveats
 If you want, I can:
 - Add automatic service files / systemd units to run the scripts as services.
 - Switch storage to InfluxDB instead of SQLite and show Grafana examples.
+
 
