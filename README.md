@@ -241,23 +241,25 @@ Setup notes
 3. Run the server (on black):
 
    ```powershell
-   # on the black/server RPi (172.16.32.182)
+   
    ssh pi@172.16.32.182
-   python3 -m venv venv
-   . venv/bin/activate
-   pip install -r requirements.txt
-   python server.py --broker 172.16.32.182 --threshold 22.0
+cd ~/IoT/black
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 server.py --broker 172.16.32.182 --threshold 22.0 --humidity-threshold 60.0
    ```
 
 4. Run the red client (on red RPi):
 
    ```powershell
-   # on the red RPi (172.16.33.38)
-   ssh pi@172.16.33.38
-   python3 -m venv venv
-   . venv/bin/activate
-   pip install -r /path/to/repo/requirements.txt
-   python red_client.py --broker 172.16.32.182 --interval 10 --simulate
+#Run the red client (on red: 172.16.33.38):
+   ssh pi@172.16.33.37
+cd ~/IoT/purple
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+sudo python3 mqttthing.py --role purple --led-pin 5
    ```
 
 5. Run the purple client (on purple RPi):
@@ -280,5 +282,6 @@ Notes and caveats
 If you want, I can:
 - Add automatic service files / systemd units to run the scripts as services.
 - Switch storage to InfluxDB instead of SQLite and show Grafana examples.
+
 
 
